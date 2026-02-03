@@ -67,4 +67,20 @@ def copy_from_py_to_txt(path:str):
 
 #question 7
 def replace_text(path:str, origin_string:str, target_string:str):
-    pass
+    try:
+        with open(path, "r") as file:
+            new_content = file.read()
+            new_content = new_content.replace(origin_string, target_string)
+        with open(path, "w") as file:
+            file.write(new_content)
+    except Exception as e:
+        print(f"There have an error {e}")
+
+#question 8
+def add_strings_to_file(path:str, strings_list:list):
+    try:
+         with open(path, "a") as file:
+             for string in strings_list:
+                 file.write(string)
+    except Exception as e:
+        print(f"There have an error {e}")
